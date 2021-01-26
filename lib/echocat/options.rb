@@ -62,7 +62,6 @@ module Echocat
       if selected_option[:class].empty?
         puts eval(selected_option[:action])
       else
-        # class_name = Object.const_set(selected_option[:class], Class.new)
         Echocat::Search.send(selected_option[:action].to_sym)
       end
 
