@@ -1,3 +1,4 @@
+require 'echocat/search'
 module Echocat
   class Book
 
@@ -11,13 +12,18 @@ module Echocat
 
     attr_accessor :title, :isbn, :authors, :description
 
-    def initialize
-      @title = title
-      @isbn = isbn
-      @authors = authors
-      @description = description
+    def initialize(attributes)
+      @title = attributes[:title]
+      @isbn = attributes[:isbn]
+      @authors = attributes[:authors]
+      @description = attributes[:description]
 
       Book.all << self
+      Search.all << self
+    end
+
+    def publishedAt
+      ''
     end
   end
 end

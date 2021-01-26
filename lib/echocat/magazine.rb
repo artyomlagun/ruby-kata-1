@@ -1,3 +1,4 @@
+require 'echocat/search'
 module Echocat
   class Magazine
 
@@ -11,13 +12,18 @@ module Echocat
 
     attr_accessor :title, :isbn, :authors, :publishedAt
 
-    def initialize
-      @title = title
-      @isbn = isbn
-      @authors = authors
-      @publishedAt = publishedAt
+    def initialize(attributes)
+      @title = attributes[:title]
+      @isbn = attributes[:isbn]
+      @authors = attributes[:authors]
+      @publishedAt = attributes[:publishedAt]
 
       Magazine.all << self
+      Search.all << self
+    end
+
+    def description
+      ''
     end
   end
 end
